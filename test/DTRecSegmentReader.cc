@@ -1,12 +1,12 @@
 /** \file
  *
- * $Date:  28/02/2006 16:22:47 CET $
- * $Revision: 1.0 $
+ * $Date: 2006/03/30 16:53:18 $
+ * $Revision: 1.1 $
  * \author Stefano Lacaprara - INFN Legnaro <stefano.lacaprara@pd.infn.it>
  */
 
 /* This Class Header */
-#include "RecoLocalMuon/DTRecSegment/test/DTRecSegmentReader.h"
+#include "RecoLocalMuon/DTSegment/test/DTRecSegmentReader.h"
 
 /* Collaborating Class Header */
 #include "FWCore/Framework/interface/MakerMacros.h"
@@ -57,16 +57,22 @@ void DTRecSegmentReader::analyze(const edm::Event & event, const
   edm::Handle<DTRecSegment2DCollection> coll;
   event.getByLabel("recseg2dbuilder", coll);
 
-  for (DTRecSegment2DCollection::DigiRangeIterator det=coll->begin() ;
-       det!=coll->end() ; ++det) {
-    //const DTSuperLayerId& slID = (*detUnitIt).first;
-    const DTRecSegment2DCollection::Range& segs = (*det).second;
-    // Loop over the rechits of this DetUnit
-    for (DTRecSegment2DCollection::const_iterator seg = segs.first;
-	 seg!=segs.second; ++seg){
-      cout << *seg << endl;
-    }
-  }
+
+  // RB, TODO:
+//   for (DTRecSegment2DCollection::const_iterator det=coll->begin() ;
+//        // RB, was
+//   //  for (DTRecSegment2DCollection::DigiRangeIterator det=coll->begin() ;
+//        det!=coll->end() ; ++det) {
+//     //const DTSuperLayerId& slID = (*detUnitIt).first;
+//     const DTRecSegment2DCollection::range& segs = (*det).second;
+//     // Loop over the rechits of this DetUnit
+//     for (DTRecSegment2DCollection::const_iterator seg = segs.first;
+// 	 seg!=segs.second; ++seg){
+//       cout << *seg << endl;
+//     }
+//   }
+
+
 }
 
 DEFINE_FWK_MODULE(DTRecSegmentReader)

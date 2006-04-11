@@ -1,9 +1,14 @@
 <use name=FWCore/Framework>
 <use name=FWCore/Utilities>
 <use name=DataFormats/DTRecHit>
+<use name=FWCore/ParameterSet>
 <use name=root>
 
 <library file="DTRecSegmentReader.cc" name=DTRecSegmentReader>
   <flags SEAL_PLUGIN_NAME="DTRecSegmentReader"> 
+  <use name=FWCore/Framework>
+  <use name=FWCore/Utilities>
   <use name=DataFormats/DTRecHit>
+  <use name=FWCore/ParameterSet>
+
 </library> 
