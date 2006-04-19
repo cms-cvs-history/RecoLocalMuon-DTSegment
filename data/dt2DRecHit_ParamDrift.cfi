@@ -10,9 +10,9 @@ module recseg2dbuilder = DTRecSegment2DProducer {
 
       # The reconstruction algo and its parameter set
 
-      string recAlgo = 'DTCombinatorialPatternReco'
+      string Reco2DAlgoName = 'DTCombinatorialPatternReco'
 
-      PSet recAlgoConfig = {
+      PSet Reco2DAlgoConfig = {
 
 		      uint32 MaxAllowedHits = 100
 		      double AlphaMaxTheta = 1.0
