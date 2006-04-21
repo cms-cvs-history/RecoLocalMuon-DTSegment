@@ -6,6 +6,9 @@ module recseg4dbuilder = DTRecSegment4DProducer {
       untracked bool debug = true
 
       # name of the rechit 2D collection in the event
+      string recHits1DLabel = 'dtrechitbuilder'
+
+      # name of the rechit 2D collection in the event
       string recHits2DLabel = 'recseg2dbuilder'
 
       # The reconstruction algo and its parameter set
