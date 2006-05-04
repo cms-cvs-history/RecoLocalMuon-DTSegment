@@ -2,36 +2,36 @@
 # This is the include file with the parameters
 # for the DTCombinatorialPatternReco algorithm,
 # which is the concrete algo for the DTRecSegment2D production.
+# The Parametrized drift algo is used.
 ##
 
  string Reco2DAlgoName = 'DTCombinatorialPatternReco'
 
       PSet Reco2DAlgoConfig = {
+			       uint32 MaxAllowedHits = 100
+			       double AlphaMaxTheta = 0.1
+			       double AlphaMaxPhi = 1.0
+		     	       untracked bool debug = true
 
-		      uint32 MaxAllowedHits = 100
-		      double AlphaMaxTheta = 1.0
-		      double AlphaMaxPhi = 0.1
-		      untracked bool debug = true
+		      	       ## Parameters for the updator
 
-		      ## Parameters for the updator
-		      #RB: TODO put 2 files for each the 2 algos
-		      ## these are the RecHit1D algos!!
-		      string recAlgo = 'DTParametrizedDriftAlgo' 
-	  	      PSet recAlgoConfig = {
-			# The module to be used for ttrig synchronization and its parameter set
-			string tTrigMode = 'DTTTrigSyncTOFCorr'
-			PSet tTrigModeConfig = {
-				untracked bool debug = true
-				double tTrig = 500
-				double vPropWire = 24.4
-				int32 tofCorrType = 2
-				}		
-			double minTime = -3
-			double maxTime = 415
-			bool interpolate = true
-			untracked bool debug = true		   
-  					   }
+	  		       ## these are the RecHit1D algos!!
+	 		      string recAlgo = 'DTParametrizedDriftAlgo' 
+	 	 	      PSet recAlgoConfig = {
+		      		# The module to be used for ttrig synchronization and its parameter set
+				string tTrigMode = 'DTTTrigSyncTOFCorr'
+				PSet tTrigModeConfig = {
+					untracked bool debug = true
+					double tTrig = 500
+					double vPropWire = 24.4
+					int32 tofCorrType = 2
+				       }		
+				double minTime = -3
+				double maxTime = 415
+				bool interpolate = true
+				untracked bool debug = true		   
+  			      }
 
-		      ## Parameters for the cleaner
-		      int32 nSharedHitsMax = 2
-			    }
+		      	     ## Parameters for the cleaner
+		             int32 nSharedHitsMax = 2
+		}
