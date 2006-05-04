@@ -1,4 +1,5 @@
 # Module for 2D rechit building 
+# The algo uses the Parametrized Drift Velocity (which is a 1D rec hit algo)
 
 module recseg2dbuilder = DTRecSegment2DProducer {
 
