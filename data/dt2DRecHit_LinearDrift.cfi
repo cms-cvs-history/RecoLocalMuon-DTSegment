@@ -1,0 +1,14 @@
+# Module for 2D rechit building 
+# The algo uses the Linear Drift Velocity (which is a 1D rec hit algo)
+
+module recseg2dbuilder = DTRecSegment2DProducer {
+
+      # debuggin opt
+      untracked bool debug = true
+
+      # name of the rechit 1D collection in the event
+      string recHits1DLabel = 'dtrechitbuilder'
+
+      # The reconstruction algo and its parameter set
+      include "RecoLocalMuon/DTSegment/data/Reco2DAlgoConfig_LinearDrift.cfi"
+}
