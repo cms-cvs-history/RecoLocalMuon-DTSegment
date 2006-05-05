@@ -4,8 +4,9 @@
 # which is the concrete algo for the DTRecSegment2D production.
 # The Parametrized drift algo is used.
 ##
+block Algo2D_ParamDrift_Declaration = {
 
- string Reco2DAlgoName = 'DTCombinatorialPatternReco'
+       string Reco2DAlgoName = 'DTCombinatorialPatternReco'
 
       PSet Reco2DAlgoConfig = {
 			       uint32 MaxAllowedHits = 100
@@ -35,3 +36,4 @@
 		      	     ## Parameters for the cleaner
 		             int32 nSharedHitsMax = 2
 		}
+}

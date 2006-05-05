@@ -1,3 +1,15 @@
+## 
+# This is the include file with the parameters
+# for the DTCombinatorialPatternReco algorithm,
+# which is the concrete algo for the DTRecSegment4D production.
+# The Parametrized Drift algos is used.
+##
+
+## this is the RecSegment2D algo include!
+include "RecoLocalMuon/DTSegment/data/Reco2DAlgoConfig_ParamDrift.cfi"
+
+block Algo4D_CombPatternReco_Declaration = { 
+
 string Reco4DAlgoName = 'DTCombinatorialPatternReco4D'
 
 PSet Reco4DAlgoConfig = {
@@ -31,9 +43,10 @@ PSet Reco4DAlgoConfig = {
 			untracked bool debug = true		   
   					   }
 		       ###
-		       ## these are the RecSegment2D algos!!
-		       include "RecoLocalMuon/DTSegment/data/Reco2DAlgoConfig_ParamDrift.cfi"
+		       ## this are the RecSegment2D algo parameters!
+		       using Algo2D_ParamDrift_Declaration
 
   		       ## Parameters for the cleaner
 		       int32 nSharedHitsMax = 2
+}
 }

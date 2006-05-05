@@ -1,6 +1,9 @@
 # Module for 2D rechit building 
 # The algo uses the Parametrized Drift Velocity (which is a 1D rec hit algo)
 
+# The block of the reconstruction algo
+include "RecoLocalMuon/DTSegment/data/Reco2DAlgoConfig_ParamDrift.cfi"
+
 module recseg2dbuilder = DTRecSegment2DProducer {
 
       # debuggin opt
@@ -10,5 +13,5 @@ module recseg2dbuilder = DTRecSegment2DProducer {
       string recHits1DLabel = 'dtrechitbuilder'
 
       # The reconstruction algo and its parameter set
-      include "RecoLocalMuon/DTSegment/data/Reco2DAlgoConfig_ParamDrift.cfi"
+      using Algo2D_ParamDrift_Declaration
 }

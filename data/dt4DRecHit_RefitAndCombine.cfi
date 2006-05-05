@@ -1,5 +1,8 @@
 # Module for 4D rechit building 
 
+# The block of the reconstruction algo
+include "RecoLocalMuon/DTSegment/data/Reco4DAlgoConfig_RefitAndCombine.cfi"
+
 module recseg4dbuilder = DTRecSegment4DProducer {
 
       # debuggin opt
@@ -12,5 +15,5 @@ module recseg4dbuilder = DTRecSegment4DProducer {
       string recHits2DLabel = 'recseg2dbuilder'
 
       # The reconstruction algo and its parameter set
-      include "RecoLocalMuon/DTSegment/data/Reco4DAlgoConfig_RefitAndCombine.cfi"
+      using Algo4D_RefitAndCombine_Declaration
 }
