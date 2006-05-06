@@ -8,6 +8,9 @@
 ## this is the RecSegment2D algo include!
 include "RecoLocalMuon/DTSegment/data/Reco2DAlgoConfig_ParamDrift.cfi"
 
+## this is the RecHit1D algo include!
+include "RecoLocalMuon/DTRecHit/data/1DAlgo_ParametrizedDrift.cfi"
+
 block Algo4D_CombPatternReco_Declaration = { 
 
 string Reco4DAlgoName = 'DTCombinatorialPatternReco4D'
@@ -24,29 +27,13 @@ PSet Reco4DAlgoConfig = {
 		      untracked bool debug = true
 
 		      ## Parameters for the updator
+			      ## this is the RecHit1D algo!!
+			      using Algo1D_ParamDrift_Declaration
+		
+		      ## this are the RecSegment2D algo parameters!
+		      using Algo2D_ParamDrift_Declaration
 
-		      ###
-		      ## these are the RecHit1D algos!!
-		      string recAlgo = 'DTParametrizedDriftAlgo' 
-	  	      PSet recAlgoConfig = {
-			# The module to be used for ttrig synchronization and its parameter set
-			string tTrigMode = 'DTTTrigSyncTOFCorr'
-			PSet tTrigModeConfig = {
-				untracked bool debug = true
-				double tTrig = 500
-				double vPropWire = 24.4
-				int32 tofCorrType = 2
-				}		
-			double minTime = -3
-			double maxTime = 415
-			bool interpolate = true
-			untracked bool debug = true		   
-  					   }
-		       ###
-		       ## this are the RecSegment2D algo parameters!
-		       using Algo2D_ParamDrift_Declaration
-
-  		       ## Parameters for the cleaner
-		       int32 nSharedHitsMax = 2
-}
+  		      ## Parameters for the cleaner
+		      int32 nSharedHitsMax = 2
+ }
 }
