@@ -1,0 +1,19 @@
+# Module for 4D rechit building 
+
+# The block of the reconstruction algo
+include "RecoLocalMuon/DTSegment/data/4DAlgo_CombPatternReco_ParamDrift.cfi"
+
+module recseg4dbuilder = DTRecSegment4DProducer {
+
+      # debuggin opt
+      untracked bool debug = true
+
+      # name of the rechit 2D collection in the event
+      string recHits1DLabel = 'dtrechitbuilder'
+
+      # name of the rechit 2D collection in the event
+      string recHits2DLabel = 'recseg2dbuilder'
+
+      # The reconstruction algo and its parameter set
+      using Algo4D_CombPatternReco_ParamDrift_Declaration
+}

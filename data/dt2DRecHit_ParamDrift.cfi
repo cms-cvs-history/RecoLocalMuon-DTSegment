@@ -2,7 +2,7 @@
 # The algo uses the Parametrized Drift Velocity (which is a 1D rec hit algo)
 
 # The block of the reconstruction algo
-include "RecoLocalMuon/DTSegment/data/Reco2DAlgoConfig_ParamDrift.cfi"
+include "RecoLocalMuon/DTSegment/data/2DAlgo_ParamDrift.cfi"
 
 module recseg2dbuilder = DTRecSegment2DProducer {
 

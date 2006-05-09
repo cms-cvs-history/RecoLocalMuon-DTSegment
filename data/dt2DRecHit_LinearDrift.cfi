@@ -2,7 +2,7 @@
 # The algo uses the Linear Drift Velocity (which is a 1D rec hit algo)
 
 # The block of the reconstruction
-include "RecoLocalMuon/DTSegment/data/Reco2DAlgoConfig_LinearDrift.cfi"
+include "RecoLocalMuon/DTSegment/data/2DAlgo_LinearDrift.cfi"
 
 module recseg2dbuilder = DTRecSegment2DProducer {
 

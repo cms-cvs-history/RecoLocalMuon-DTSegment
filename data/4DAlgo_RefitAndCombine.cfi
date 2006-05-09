@@ -1,0 +1,20 @@
+## this is the RecHit1D algo include!
+include "RecoLocalMuon/DTRecHit/data/1DAlgo_ParametrizedDrift.cfi"
+
+block Algo4D_RefitAndCombine_Declaration = {
+
+string Reco4DAlgoName = 'DTRefitAndCombineReco4D'
+
+PSet Reco4DAlgoConfig = {
+
+		      untracked bool debug = true
+		      double MaxChi2forPhi = 100   #FIX this value!
+
+		      ## Parameters for the updator
+  			      ## this is the RecHit1D algo!!
+			      using Algo1D_ParamDrift_Declaration
+
+		      ## Parameters for the cleaner
+		      int32 nSharedHitsMax = 2
+ }
+}
