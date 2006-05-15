@@ -16,7 +16,7 @@ block Algo2D_ParamDrift_Declaration = {
 			       uint32 MaxAllowedHits = 100
 			       double AlphaMaxTheta = 0.1
 			       double AlphaMaxPhi = 1.0
-		     	       untracked bool debug = true
+		     	       untracked bool debug = false
 
 		      	       ## Parameters for the updator
 		  		       ## this is the RecHit1D algo!!

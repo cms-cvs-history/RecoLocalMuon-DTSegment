@@ -7,7 +7,7 @@ include "RecoLocalMuon/DTSegment/data/2DAlgo_CosmicData.cfi"
 module recseg2dbuilder = DTRecSegment2DProducer {
 
       # debuggin opt
-      untracked bool debug = true
+      untracked bool debug = false
 
       # name of the rechit 1D collection in the event
       string recHits1DLabel = 'dtrechitbuilder'

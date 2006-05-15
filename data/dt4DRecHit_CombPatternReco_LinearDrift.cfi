@@ -6,7 +6,7 @@ include "RecoLocalMuon/DTSegment/data/4DAlgo_CombPatternReco_LinearDrift.cfi"
 module recseg4dbuilder = DTRecSegment4DProducer {
 
       # debuggin opt
-      untracked bool debug = true
+      untracked bool debug = false
 
       # name of the rechit 2D collection in the event
       string recHits1DLabel = 'dtrechitbuilder'

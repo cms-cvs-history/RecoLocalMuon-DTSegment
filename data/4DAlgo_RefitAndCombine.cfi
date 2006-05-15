@@ -7,7 +7,7 @@ string Reco4DAlgoName = 'DTRefitAndCombineReco4D'
 
 PSet Reco4DAlgoConfig = {
 
-		      untracked bool debug = true
+		      untracked bool debug = false
 		      double MaxChi2forPhi = 100   #FIX this value!
 
 		      ## Parameters for the updator

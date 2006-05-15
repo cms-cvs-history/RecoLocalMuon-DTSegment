@@ -24,7 +24,7 @@ PSet Reco4DAlgoConfig = {
                       # event must contain the 2D segments!
 		      bool AllDTRecHits = true
 
-		      untracked bool debug = true
+		      untracked bool debug = false
 
 		      ## Parameters for the updator
 			      ## this is the RecHit1D algo!!
