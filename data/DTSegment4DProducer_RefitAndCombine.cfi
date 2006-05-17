@@ -1,19 +1,19 @@
 # Module for 4D rechit building 
 
 # The block of the reconstruction algo
-include "RecoLocalMuon/DTSegment/data/4DAlgo_CombPatternReco_CosmicData.cfi"
+include "RecoLocalMuon/DTSegment/data/DTRefitAndCombineReco4DAlgo.cfi"
 
-module recseg4dbuilder = DTRecSegment4DProducer {
+module DTSegment4DProducer = DTRecSegment4DProducer {
 
       # debuggin opt
       untracked bool debug = false
 
       # name of the rechit 2D collection in the event
-      string recHits1DLabel = 'dtrechitbuilder'
+      string recHits1DLabel = 'DTRecHit1DProducer'
 
       # name of the rechit 2D collection in the event
-      string recHits2DLabel = 'recseg2dbuilder'
+      string recHits2DLabel = 'DTSegment2DProducer'
 
       # The reconstruction algo and its parameter set
-      using Algo4D_CombPatternReco_CosmicData_Declaration
+      using DTRefitAndCombineReco4DAlgo
 }

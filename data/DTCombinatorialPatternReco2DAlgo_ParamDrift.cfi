@@ -5,12 +5,12 @@
 # The Parametrized drift algo is used.
 ##
 
-# The reconstruction algo and its parameter set
-include "RecoLocalMuon/DTRecHit/data/1DAlgo_ParametrizedDrift.cfi"
+# The reconstruction algo and its parameter set (it is the RecHit1D algo)
+include "RecoLocalMuon/DTRecHit/data/DTParametrizedDriftAlgo.cfi"
 
-block Algo2D_ParamDrift_Declaration = {
+block DTCombinatorialPatternReco2DAlgo_ParamDrift = {
 
-       string Reco2DAlgoName = 'DTCombinatorialPatternReco'
+      string Reco2DAlgoName = 'DTCombinatorialPatternReco'
 
       PSet Reco2DAlgoConfig = {
 			       uint32 MaxAllowedHits = 100
@@ -20,7 +20,7 @@ block Algo2D_ParamDrift_Declaration = {
 
 		      	       ## Parameters for the updator
 		  		       ## this is the RecHit1D algo!!
-				       using Algo1D_ParamDrift_Declaration
+				       using DTParametrizedDriftAlgo
 
 		      	       ## Parameters for the cleaner
 		               int32 nSharedHitsMax = 2

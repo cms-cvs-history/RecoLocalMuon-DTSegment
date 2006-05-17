@@ -6,12 +6,12 @@
 ##
 
 ## this is the RecSegment2D algo include!
-include "RecoLocalMuon/DTSegment/data/2DAlgo_LinearDrift.cfi"
+include "RecoLocalMuon/DTSegment/data/DTCombinatorialPatternReco2DAlgo_LinearDrift_CosmicData.cfi"
 
 ## this is the RecHit1D algo include!
-include "RecoLocalMuon/DTRecHit/data/1DAlgo_LinearDrift.cfi"
+include "RecoLocalMuon/DTRecHit/data/DTLinearDriftAlgo_CosmicData.cfi"
 
-block Algo4D_CombPatternReco_LinearDrift_Declaration = { 
+block DTCombinatorialPatternReco4DAlgo_LinearDrift_CosmicData = { 
 
 string Reco4DAlgoName = 'DTCombinatorialPatternReco4D'
 
@@ -28,10 +28,10 @@ PSet Reco4DAlgoConfig = {
 
 		      ## Parameters for the updator
 			      ## this is the RecHit1D algo!!
-			      using Algo1D_LinearDrift_Declaration
+			      using DTLinearDriftAlgo_CosmicData
 		
 		      ## this are the RecSegment2D algo parameters!
-		      using Algo2D_LinearDrift_Declaration
+		      using DTCombinatorialPatternReco2DAlgo_LinearDrift_CosmicData
 
   		      ## Parameters for the cleaner
 		      int32 nSharedHitsMax = 2

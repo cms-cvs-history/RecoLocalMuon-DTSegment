@@ -1,7 +1,7 @@
 ## this is the RecHit1D algo include!
-include "RecoLocalMuon/DTRecHit/data/1DAlgo_ParametrizedDrift.cfi"
+include "RecoLocalMuon/DTRecHit/data/DTParametrizedDriftAlgo.cfi"
 
-block Algo4D_RefitAndCombine_Declaration = {
+block DTRefitAndCombineReco4DAlgo = {
 
 string Reco4DAlgoName = 'DTRefitAndCombineReco4D'
 
@@ -12,7 +12,7 @@ PSet Reco4DAlgoConfig = {
 
 		      ## Parameters for the updator
   			      ## this is the RecHit1D algo!!
-			      using Algo1D_ParamDrift_Declaration
+			      using DTParametrizedDriftAlgo
 
 		      ## Parameters for the cleaner
 		      int32 nSharedHitsMax = 2
