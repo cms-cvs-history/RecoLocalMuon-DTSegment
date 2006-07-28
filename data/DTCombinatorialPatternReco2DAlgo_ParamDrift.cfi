@@ -24,5 +24,6 @@ block DTCombinatorialPatternReco2DAlgo_ParamDrift = {
 
 		      	       ## Parameters for the cleaner
 		               int32 nSharedHitsMax = 2
-		}
+			      int32 segmCleanerMode = 1
+	}
 }
