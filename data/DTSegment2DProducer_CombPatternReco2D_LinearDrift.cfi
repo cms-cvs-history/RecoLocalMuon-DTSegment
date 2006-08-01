@@ -4,13 +4,13 @@
 # The block of the reconstruction algo
 include "RecoLocalMuon/DTSegment/data/DTCombinatorialPatternReco2DAlgo_LinearDrift.cfi"
 
-module DTSegment2DProducer = DTRecSegment2DProducer {
+module dt2DSegments = DTRecSegment2DProducer {
 
       # debuggin opt
       untracked bool debug = false
 
       # name of the rechit 1D collection in the event
-      string recHits1DLabel = 'DTRecHit1DProducer'
+      string recHits1DLabel = 'dt1DRecHits'
 
       # The reconstruction algo and its parameter set
       using DTCombinatorialPatternReco2DAlgo_LinearDrift
