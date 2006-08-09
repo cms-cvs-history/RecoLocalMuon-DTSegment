@@ -1,17 +1,4 @@
-# Module for 2D rechit building 
-# The algo uses the Parametrized Drift Velocity (which is a 1D rec hit algo)
+#FIXME: please use the file below, this old one will disappear soon.
 
-# The block of the reconstruction algo
-include "RecoLocalMuon/DTSegment/data/DTCombinatorialPatternReco2DAlgo_ParamDrift.cfi"
+include "RecoLocalMuon/DTSegment/data/dt2DSegments_CombPatternReco2D_ParamDrift.cfi"
 
-module dt2DSegments = DTRecSegment2DProducer {
-
-      # debuggin opt
-      untracked bool debug = false
-
-      # name of the rechit 1D collection in the event
-      string recHits1DLabel = 'dt1DRecHits'
-
-      # The reconstruction algo and its parameter set
-      using DTCombinatorialPatternReco2DAlgo_ParamDrift
-}
