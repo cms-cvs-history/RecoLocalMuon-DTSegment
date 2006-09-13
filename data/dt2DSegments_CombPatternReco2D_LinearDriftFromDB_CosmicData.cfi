@@ -1,0 +1,17 @@
+# Module for 2D rechit building 
+# The algo uses the Linear Drift Velocity from DB (which is a 1D rec hit algo)
+
+# The block of the reconstruction
+include "RecoLocalMuon/DTSegment/data/DTCombinatorialPatternReco2DAlgo_LinearDriftFromDB_CosmicData.cfi"
+
+module dt2DSegments = DTRecSegment2DProducer {
+
+      # debuggin opt
+      untracked bool debug = false
+
+      # name of the rechit 1D collection in the event
+      string recHits1DLabel = 'dt1DRecHits'
+
+      # The reconstruction algo and its parameter set
+      using DTCombinatorialPatternReco2DAlgo_LinearDriftFromDB_CosmicData
+}

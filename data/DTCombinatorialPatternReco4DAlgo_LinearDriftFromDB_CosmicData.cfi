@@ -1,0 +1,40 @@
+## 
+# This is the include file with the parameters
+# for the DTCombinatorialPatternReco algorithm,
+# which is the concrete algo for the DTRecSegment4D production.
+# The constant v drift algos is used.
+##
+
+## this is the RecSegment2D algo include!
+include "RecoLocalMuon/DTSegment/data/DTCombinatorialPatternReco2DAlgo_LinearDriftFromDB_CosmicData.cfi"
+
+## this is the RecHit1D algo include!
+include "RecoLocalMuon/DTRecHit/data/DTLinearDriftFromDBAlgo_CosmicData.cfi"
+
+block DTCombinatorialPatternReco4DAlgo_LinearDriftFromDB_CosmicData = { 
+
+string Reco4DAlgoName = 'DTCombinatorialPatternReco4D'
+
+PSet Reco4DAlgoConfig = {
+	     
+		      # the input type. 
+   		      # If true the instructions in setDTRecSegment2DContainer will be schipped and the 
+		      # theta segment will be recomputed from the 1D rechits
+                      # If false the theta segment will be taken from the Event. Caveat: in this case the
+                      # event must contain the 2D segments!
+		      bool AllDTRecHits = true
+
+		      untracked bool debug = false
+
+		      ## Parameters for the updator
+			      ## this is the RecHit1D algo!!
+			      using DTLinearDriftFromDBAlgo_CosmicData
+		
+		      ## this are the RecSegment2D algo parameters!
+		      using DTCombinatorialPatternReco2DAlgo_LinearDriftFromDB_CosmicData
+
+  		      ## Parameters for the cleaner
+		      int32 nSharedHitsMax = 2
+		      int32 segmCleanerMode = 1
+ }
+}
