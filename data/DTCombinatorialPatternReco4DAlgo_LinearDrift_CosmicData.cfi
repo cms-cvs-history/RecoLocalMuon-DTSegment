@@ -2,7 +2,7 @@
 # This is the include file with the parameters
 # for the DTCombinatorialPatternReco algorithm,
 # which is the concrete algo for the DTRecSegment4D production.
-# The Parametrized Drift algos is used.
+# The constant v drift algos is used.
 ##
 
 ## this is the RecSegment2D algo include!
