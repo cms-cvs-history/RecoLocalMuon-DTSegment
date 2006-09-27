@@ -14,7 +14,7 @@ block DTCombinatorialPatternReco2DAlgo_LinearDrift_CosmicData = {
 
       PSet Reco2DAlgoConfig = {
 
-		      uint32 MaxAllowedHits = 100
+		      uint32 MaxAllowedHits = 50
 		      double AlphaMaxTheta = 100
 		      double AlphaMaxPhi = 100
 		      untracked bool debug = false

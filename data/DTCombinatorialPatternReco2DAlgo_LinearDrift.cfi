@@ -14,7 +14,7 @@ block DTCombinatorialPatternReco2DAlgo_LinearDrift = {
 
       PSet Reco2DAlgoConfig = {
 
-		      uint32 MaxAllowedHits = 100
+		      uint32 MaxAllowedHits = 50
 		      double AlphaMaxTheta = 0.1
 		      double AlphaMaxPhi = 1.0
 		      untracked bool debug = false
