@@ -38,6 +38,7 @@ PSet Reco4DAlgoConfig = {
 		      int32 segmCleanerMode = 1
 
 	bool performT0SegCorrection = false
+        bool performT0_vdriftSegCorrection= false
 	untracked bool T0SegCorrectionDebug = false
 
  }

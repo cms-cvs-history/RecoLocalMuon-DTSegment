@@ -28,6 +28,7 @@ block DTCombinatorialPatternReco2DAlgo_LinearDriftFromDB_CosmicData = {
 		      int32 segmCleanerMode = 1
 
 	bool performT0SegCorrection = false
-	untracked bool T0SegCorrectionDebug = false
+        bool performT0_vdriftSegCorrection= false
+ 	untracked bool T0SegCorrectionDebug = false
     }
 }

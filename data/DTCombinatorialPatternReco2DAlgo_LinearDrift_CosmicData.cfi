@@ -27,6 +27,7 @@ block DTCombinatorialPatternReco2DAlgo_LinearDrift_CosmicData = {
 		      int32 nSharedHitsMax = 2
 		      int32 segmCleanerMode = 1
 
+	bool performT0_vdriftSegCorrection= false
 	bool performT0SegCorrection = false
 	untracked bool T0SegCorrectionDebug = false
     }

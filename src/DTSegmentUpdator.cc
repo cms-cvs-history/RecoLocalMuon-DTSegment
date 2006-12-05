@@ -1,9 +1,10 @@
 /** \file
  *
- * $Date: 2006/11/20 18:28:00 $
- * $Revision: 1.16 $
+ * $Date: 2006/11/20 18:56:22 $
+ * $Revision: 1.15.2.1 $
  * \author Stefano Lacaprara - INFN Legnaro <stefano.lacaprara@pd.infn.it>
  * \author Riccardo Bellan - INFN TO <riccardo.bellan@cern.ch>
+ * \author A.M - INFN PD <anna.meneguzzo@pd.infn.it>
  */
 
 /* This Class Header */
@@ -42,6 +43,7 @@ using namespace edm;
 DTSegmentUpdator::DTSegmentUpdator(const ParameterSet& config) :
   theFitter(new DTLinearFit()),
   T0_seg(config.getParameter<bool>("performT0SegCorrection")),
+  vdrift_4parfit(config.getParameter<bool>("performT0_vdriftSegCorrection")),
   T0_seg_debug(config.getUntrackedParameter<bool>("T0SegCorrectionDebug",false))
  {  
   string theAlgoName = config.getParameter<string>("recAlgo");
@@ -121,8 +123,7 @@ void DTSegmentUpdator::update(DTRecSegment2D* seg)  {
 
  if (T0_seg && T0_seg_debug)   cout << "  entered in update(DTRecSegment2D* seg)  !! t0cor = "<< t0cor  << endl;
   if (T0_seg) {
-    //aaaaa 
-    if (t0cor_seg == 0. )fitT0_seg(seg,t0cor);
+    if (t0cor_seg == 0. )fitT0_seg(seg,t0cor);//for correction on only PHI+theta 4D segments) comment this line
     if (T0_seg && T0_seg_debug) cout << " After  fitT0_seg(seg) in update(DTRecSegment2D* seg)!! " << endl;
   } 
   if (T0_seg && T0_seg_debug) cout << " After  fitT0_seg(seg) in update(DTRecSegment2D* seg) seg ?? t0cor =  " << t0cor <<endl;
@@ -417,7 +418,7 @@ void DTSegmentUpdator::fitT0_seg(DTRecSegment2D* seg, float& t0cor) {
   vector<float> y;
   vector<float> sigy;
   vector<int> lc;
-  bool vdrift_4parfit=true;  // Per Nicola ... qui per applicare Vdrift_corr , dopo aver sostituito opportunamete la fitT0(x,..)
+  //  bool vdrift_4parfit=true;
   vector<DTRecHit1D> hits=seg->specificRecHits();
 
   DTWireId wireId;
@@ -503,14 +504,16 @@ void DTSegmentUpdator::fitT0_seg(DTRecSegment2D* seg, float& t0cor) {
                           		t0cor_dvDrift =   dvDrift + t0cor_10 ;
  		if ( t0cor_10 < 0. )    t0cor_dvDrift = - dvDrift + t0cor_10 ;
 		 
- 		if (t0cor != 0) cout <<  "NPT " << npt <<  "   " <<  wireId.wheel() << "   " << wireId.station() << "   " <<  wireId.sector() <<" " << t0cor << " vdrift= " << dvDrift0 <<endl;
+		
+	//NPT	if (t0cor_dvDrift!= 0) cout <<  "NPT " << npt <<  "   " <<  wireId.wheel() << "   " << wireId.station() << "   " <<  wireId.sector() <<" " << t0cor << " vdrift= " << dvDrift0 <<endl;
 		//if (t0cor != 0) cout <<  "NPT " <<"t0cor " << t0cor_dvDrift << endl;
   		//if (t0cor != 0) cout <<  "NPT t0cor _10= " << t0cor_10 << " vdrift= " << dvDrift << "t0_seg= " << t0cor_dvDrift <<endl;
-    		if (t0cor_dvDrift != 0) {
-			for (int jnpt=0; jnpt<npt; jnpt++){
-        		 cout <<  "NPT " <<jnpt+1 << "  " <<x[jnpt] << " " <<y[jnpt] <<"    " <<lc[jnpt]<< " " << d_drift[jnpt] << endl;
-  			}
-  		}
+    	//NPT	if (t0cor_dvDrift != 0) {
+	//NPT		for (int jnpt=0; jnpt<npt; jnpt++){
+        //NPT		 cout <<  "NPT " <<jnpt+1 << "  " <<x[jnpt] << " " <<y[jnpt] <<"    " <<lc[jnpt]<< " " << d_drift[jnpt] << endl;
+  	//NPT		}
+  	//NPT	}
+		
      }
 
      seg->setT0(t0cor_dvDrift); 
@@ -559,7 +562,7 @@ void DTSegmentUpdator::Fit4Var(
 	     double  chi2fitN2=-1 ;
              double  chi2fit3=-1;
 	     double  chi2fitN3=-1 ;
-//           double  chi2fit4=-1;
+             double  chi2fit4=-1;
 	     double  chi2fitN4=-1 ;
 	    float bminf3=bminf;
 	    float aminf3=aminf;
@@ -634,7 +637,7 @@ void DTSegmentUpdator::Fit4Var(
     	double b6 = sltx;
    	double c6 = st;
     	double v6 = st2;	
-//    	double d6 = slty;
+    	double d6 = slty;
     	double det = (a1*a1*(b2*v6 - b6*b6) - a1*(a2*a2*v6 - 2*a2*a6*b6 + a6*a6*b2 + b2*c6*c6 + b3*(b3*v6 - 2*b6*c6))
                + a2*a2*c6*c6 + 2*a2*(a3*(b3*v6 - b6*c6) - a6*b3*c6) + a3*a3*(b6*b6 - b2*v6)
 	       + a6*(2*a3*(b2*c6 - b3*b6) + a6*b3*b3)); 
@@ -671,10 +674,73 @@ void DTSegmentUpdator::Fit4Var(
     cminf3=cminf;
    }  
    nppar3=nppar;
-   if (debug) cout << "   dt0= 0 : slope 2  = "<<b     << "  pos in  = " << a     <<" chi2fitN2 = " << chi2fitN2 <<"  nppar= " << nppar2 << " nptfit= " << nptfit <<endl;
-   if (debug) cout << "   dt0= 0 : slope 3  = "<<bminf << "  pos out = " << aminf <<" chi2fitN3 = " << chi2fitN3 <<"  nppar= " << nppar3 << " T0_ev ns= " << cminf/0.00543 <<endl;
+ if (debug)   cout << "   dt0= 0 : slope 2  = "<<b     << "  pos in  = " << a     <<" chi2fitN2 = " << chi2fitN2 <<"  nppar= " << nppar2 << " nptfit= " << nptfit <<endl;
+    // if (debug) 
+ if (debug)   cout << "   dt0= 0 : slope 3  = "<<bminf << "  pos out = " << aminf <<" chi2fitN3 = " << chi2fitN3 <<"  nppar= " << nppar3 << " T0_ev ns= " << cminf/0.00543 <<endl;
+//***********************************
+
+   if(nptfit>=5) {   
+	if (det != 0) { 
+		nppar = 4;
+		chi2fit =0;
+		// calcolo i parametri a, b, c e v
+		aminf = (a1*(a2*(b6*d6 - v6*d2) + a6*(b6*d2 - b2*d6) + d1*(b2*v6 - b6*b6)) - a2*(b3*(c6*d6 - v6*d3)
+		       + c6*(b6*d3 - c6*d2)) + a3*(b2*(c6*d6 - v6*d3) + b3*(v6*d2 - b6*d6) + b6*(b6*d3 - c6*d2))
+		       + a6*(b2*c6*d3 + b3*(b3*d6 - b6*d3 - c6*d2)) - d1*(b2*c6*c6 + b3*(b3*v6 - 2*b6*c6)))/det;
+		bminf = - (a1*a1*(b6*d6 - v6*d2) - a1*(a2*(a6*d6 - v6*d1) - a6*a6*d2 + a6*b6*d1 + b3*(c6*d6 - v6*d3)
+		        + c6*(b6*d3 - c6*d2)) + a2*(a3*(c6*d6 - v6*d3) + c6*(a6*d3 - c6*d1)) + a3*a3*(v6*d2 - b6*d6)
+		        + a3*(a6*(b3*d6 + b6*d3 - 2*c6*d2) - d1*(b3*v6 - b6*c6)) - a6*b3*(a6*d3 - c6*d1))/det;
+		cminf = -(a1*(b2*(c6*d6 - v6*d3) + b3*(v6*d2 - b6*d6) + b6*(b6*d3 - c6*d2)) + a2*a2*(v6*d3 - c6*d6)
+		        + a2*(a3*(b6*d6 - v6*d2) + a6*(b3*d6 - 2*b6*d3 + c6*d2) - d1*(b3*v6 - b6*c6))
+		        + a3*(d1*(b2*v6 - b6*b6) - a6*(b2*d6 - b6*d2)) + a6*(a6*(b2*d3 - b3*d2) - d1*(b2*c6 - b3*b6)))/det;
+		vminf = - (a1*a1*(b2*d6 - b6*d2) - a1*(a2*a2*d6 - a2*(a6*d2 + b6*d1) + a6*b2*d1 + b2*c6*d3
+		        + b3*(b3*d6 - b6*d3 - c6*d2)) + a2*a2*c6*d3 + a2*(a3*(2*b3*d6 - b6*d3 - c6*d2) - b3*(a6*d3 + c6*d1))
+		        + a3*a3*(b6*d2 - b2*d6) + a3*(a6*(b2*d3 - b3*d2) + d1*(b2*c6 - b3*b6)) + a6*b3*b3*d1)/det;
+
+		// calcolo del chi quadro
+		for (int j=0; j<nptfit; j++) {
+		//		        cout << "sigma " << sigma << endl;
+			double ypred = aminf + bminf*xfit[j];
+			double dy = (yfit[j]+vminf*lfit[j]*tfit[j]-cminf*lfit[j] -ypred)/sigma; 
+			chi2fit = chi2fit + dy*dy;
+
+				} //end loop chi2
+		if (nptfit<=nppar){ 
+		chi2fit4=chi2fit;  //set negative Chi2 if not a fit...;
+		chi2fitN4=-1;
+		//		cout << "nptfit " << nptfit << " nppar " << nppar << endl;
+		}
+		else{
+		chi2fit4 = chi2fit ;
+		chi2fitN4= chi2fit / (nptfit-nppar); 
+		}
+	}
+	else {
+		chi2fit4 = chi2fit;
+		vminf=0.;
+		if (nptfit <= nppar) {
+		 chi2fitN4=-1;
+		
+		}
+		else{
+		   chi2fitN4	= chi2fit / (nptfit-nppar); 
+		  
+		}
+       	     }
+   	 if (abs(vminf) >= 0.09) {
+       	 	vminf=0;
+		cminf=cminf3;
+		aminf=aminf3;
+		bminf=bminf3;
+		nppar=3;
+		chi2fit = chi2fit3;
+	}
+	
+    }
+   nppar4=nppar;
+//***********************************
      
-    if (debug) cout << "   dt0= 0 : slope 4  = "<<bminf << "  pos out = " << aminf <<" chi2fitN4 = " << chi2fitN4 <<"  nppar= " <<nppar4<< " T0_ev ns= " << cminf/0.00543 <<" delta v = "<< vminf <<endl;
+ if (debug)    cout << "   dt0= 0 : slope 4  = "<<bminf << "  pos out = " << aminf <<" chi2fitN4 = " << chi2fitN4 <<"  nppar= " <<nppar4<< " T0_ev ns= " << cminf/0.00543 <<" delta v = "<< vminf <<endl;
     if (abs(vminf)>=0.09) {
         cout << "  vminf gt 0.09 det=  " << det << endl;
 	cout << "   dt0= 0 : slope 4  = "<<bminf << "  pos out = " << aminf <<" chi2fitN4 = " << chi2fitN4 << " T0_ev ns= " << cminf/0.00543 <<" delta v = "<< vminf <<endl;
