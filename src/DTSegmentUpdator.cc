@@ -1,7 +1,7 @@
 /** \file
  *
- * $Date: 2006/11/20 18:56:22 $
- * $Revision: 1.15.2.1 $
+ * $Date: 2006/12/05 17:46:14 $
+ * $Revision: 1.15.2.2 $
  * \author Stefano Lacaprara - INFN Legnaro <stefano.lacaprara@pd.infn.it>
  * \author Riccardo Bellan - INFN TO <riccardo.bellan@cern.ch>
  * \author A.M - INFN PD <anna.meneguzzo@pd.infn.it>
@@ -679,7 +679,7 @@ void DTSegmentUpdator::Fit4Var(
  if (debug)   cout << "   dt0= 0 : slope 3  = "<<bminf << "  pos out = " << aminf <<" chi2fitN3 = " << chi2fitN3 <<"  nppar= " << nppar3 << " T0_ev ns= " << cminf/0.00543 <<endl;
 //***********************************
 
-   if(nptfit>=5) {   
+    if( (nptfit>=5) && vdrift_4parfit) {
 	if (det != 0) { 
 		nppar = 4;
 		chi2fit =0;
