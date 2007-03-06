@@ -1,0 +1,31 @@
+## 
+# This is the include file with the parameters
+# for the DTCombinatorialPatternReco algorithm,
+# which is the concrete algo for the DTRecSegment2D production.
+# The linear Drift algos is used.
+##
+
+# The reconstruction algo and its parameter set
+include "RecoLocalMuon/DTRecHit/data/DTNoDriftAlgo_CosmicData.cfi"
+
+block DTCombinatorialPatternReco2DAlgo_NoDrift_CosmicData = { 
+
+ string Reco2DAlgoName = 'DTCombinatorialPatternReco'
+
+      PSet Reco2DAlgoConfig = {
+
+		      uint32 MaxAllowedHits = 50
+		      double AlphaMaxTheta = 100
+		      double AlphaMaxPhi = 100
+		      untracked bool debug = false
+
+		      ## Parameters for the updator
+			      ## this is the RecHit1D algo!!
+		 	      using DTNoDriftAlgo_CosmicData
+
+		      ## Parameters for the cleaner
+		      int32 nSharedHitsMax = 2
+		      int32 nUnSharedHitsMin = 2
+		      int32 segmCleanerMode = 1
+	}
+}

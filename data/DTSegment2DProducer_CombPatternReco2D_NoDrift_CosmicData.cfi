@@ -1,0 +1,3 @@
+#FIXME: please use the file below, this old one will disappear soon.
+
+include "RecoLocalMuon/DTSegment/data/dt2DSegments_CombPatternReco2D_NoDrift_CosmicData.cfi"
