@@ -1,13 +1,21 @@
 <use name=FWCore/Framework>
 <use name=FWCore/Utilities>
 <use name=DataFormats/DTRecHit>
+<use name=DataFormats/CSCRecHit>
 <use name=FWCore/ParameterSet>
 <use name=root>
+<use name=Geometry/Records>
+<use name=Geometry/DTGeometry>
+<use name=DataFormats/LTCDigi>
+<use name=RecoMuon/TrackingTools>
+<use name=TrackingTools/TransientTrack>
+<use name=CalibMuon/DTDigiSync>
+<use name=RecoMuon/TrackingTools>
+<use name=TrackingTools/TransientTrack>
 
-<library file="DTRecSegment2DReader.cc" name=DTRecSegment2DReader>
-  <flags SEAL_PLUGIN_NAME="DTRecSegment2DReader"> 
-</library> 
-
-<library file="DTRecSegment4DReader.cc" name=DTRecSegment4DReader>
-  <flags SEAL_PLUGIN_NAME="DTRecSegment4DReader"> 
-</library> 
+<library file=DTSegmentResidual.cc,DTMeanTimer.cc,DTAnalyzer.cc name=DTAnalyzer>
+  <flags SEAL_PLUGIN_NAME="DTAnalyzer"> 
+</library>
+<library file=DTEffAnalyzer.cc name=DTEffAnalyzer>
+  <flags SEAL_PLUGIN_NAME="DTEffAnalyzer"> 
+</library>
