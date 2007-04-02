@@ -23,7 +23,7 @@ namespace edm {
 }
 
 /* Collaborating Class Declarations */
-#include "FWCore/Framework/interface/Handle.h"
+#include "DataFormats/Common/interface/Handle.h"
 class TFile;
 class TH1F;
 class TH2F;

@@ -796,8 +796,8 @@ void DTAnalyzer::analyzeSATrack(const Event & event,
     histo("hPhiInnerTSOSSA")->Fill(innerTSOS.globalMomentum().phi());
     histo("hEtaInnerTSOSSA")->Fill(innerTSOS.globalMomentum().eta());
 
-    trackingRecHit_iterator rhbegin = staTrack->recHitsBegin();
-    trackingRecHit_iterator rhend = staTrack->recHitsEnd();
+    // trackingRecHit_iterator rhbegin = staTrack->recHitsBegin();
+    // trackingRecHit_iterator rhend = staTrack->recHitsEnd();
 
     histo("hNhitsSA")->Fill(staTrack->recHitsSize());
     histo("hInnerRSA")->Fill(sqrt(staTrack->innerPosition().perp2()));
@@ -894,4 +894,4 @@ void DTAnalyzer::createTH2F(const std::string& name,
   new TH2F(hName.str().c_str(), hTitle.str().c_str(), nBinX,binXMin,binXMax, nBinY,binYMin,binYMax);
 }
 
-DEFINE_FWK_MODULE(DTAnalyzer)
+DEFINE_FWK_MODULE(DTAnalyzer);
