@@ -17,5 +17,6 @@
   <flags EDM_PLUGIN=1> 
 </library>
 <library file=DTEffAnalyzer.cc name=DTEffAnalyzer>
+<flags SEAL_PLUGIN_NAME="DTEffAnalyzer">
   <flags EDM_PLUGIN=1> 
 </library>
