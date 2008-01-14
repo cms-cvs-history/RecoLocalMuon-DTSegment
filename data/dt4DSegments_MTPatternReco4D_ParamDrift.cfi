@@ -1,7 +1,7 @@
 # Module for 4D rechit building 
 
 # The block of the reconstruction algo
-include "RecoLocalMuon/DTSegment/data/DTMeantimerPatternReco4DAlgo_LinearDrift.cfi"
+include "RecoLocalMuon/DTSegment/data/DTMeantimerPatternReco4DAlgo_ParamDrift.cfi"
 
 module dt4DSegments = DTRecSegment4DProducer {
 
@@ -15,5 +15,5 @@ module dt4DSegments = DTRecSegment4DProducer {
       string recHits2DLabel = 'dt2DSegments'
 
       # The reconstruction algo and its parameter set
-      using DTMeantimerPatternReco4DAlgo_LinearDrift
+      using DTMeantimerPatternReco4DAlgo_ParamDrift
 }

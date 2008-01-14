@@ -6,12 +6,12 @@
 ##
 
 ## this is the RecSegment2D algo include!
-include "RecoLocalMuon/DTSegment/data/DTMeantimerPatternReco2DAlgo_LinearDrift.cfi"
+include "RecoLocalMuon/DTSegment/data/DTMeantimerPatternReco2DAlgo_ParamDrift.cfi"
 
 ## this is the RecHit1D algo include!
-include "RecoLocalMuon/DTRecHit/data/DTLinearDriftAlgo.cfi"
+include "RecoLocalMuon/DTRecHit/data/DTParametrizedDriftAlgo.cfi"
 
-block DTMeantimerPatternReco4DAlgo_LinearDrift = { 
+block DTMeantimerPatternReco4DAlgo_ParamDrift = { 
 
   string Reco4DAlgoName = 'DTMeantimerPatternReco4D'
 
@@ -28,10 +28,10 @@ block DTMeantimerPatternReco4DAlgo_LinearDrift = {
 
       ## Parameters for the updator
         ## this is the RecHit1D algo!!
-        using DTLinearDriftAlgo
+        using DTParametrizedDriftAlgo
 		
         ## these are the RecSegment2D algo parameters!
-        using DTMeantimerPatternReco2DAlgo_LinearDrift
+        using DTMeantimerPatternReco2DAlgo_ParamDrift
 
       ## Parameters for the cleaner
       int32 nSharedHitsMax = 2

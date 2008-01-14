@@ -2,13 +2,13 @@
 # This is the include file with the parameters
 # for the DTMeantimerPatternReco algorithm,
 # which is the concrete algo for the DTRecSegment2D production.
-# The linear Drift algos is used.
+# The Param Drift algos is used.
 ##
 
 # The reconstruction algo and its parameter set
-include "RecoLocalMuon/DTRecHit/data/DTLinearDriftAlgo.cfi"
+include "RecoLocalMuon/DTRecHit/data/DTParametrizedDriftAlgo.cfi"
 
-block DTMeantimerPatternReco2DAlgo_LinearDrift = { 
+block DTMeantimerPatternReco2DAlgo_ParamDrift = { 
 
  string Reco2DAlgoName = 'DTMeantimerPatternReco'
 
@@ -24,7 +24,7 @@ block DTMeantimerPatternReco2DAlgo_LinearDrift = {
 
       ## Parameters for the updator
           ## this is the RecHit1D algo!!
-          using DTLinearDriftAlgo
+          using DTParametrizedDriftAlgo
 
       ## Parameters for the cleaner
       int32 nSharedHitsMax = 2
