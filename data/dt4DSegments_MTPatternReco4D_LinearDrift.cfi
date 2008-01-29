@@ -9,10 +9,10 @@ module dt4DSegments = DTRecSegment4DProducer {
       untracked bool debug = false
 
       # name of the rechit 1D collection in the event
-      string recHits1DLabel = 'dt1DRecHits'
+      InputTag recHits1DLabel = dt1DRecHits
 
       # name of the rechit 2D collection in the event
-      string recHits2DLabel = 'dt2DSegments'
+      InputTag recHits2DLabel = dt2DSegments
 
       # The reconstruction algo and its parameter set
       using DTMeantimerPatternReco4DAlgo_LinearDrift
