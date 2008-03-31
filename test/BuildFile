@@ -10,8 +10,6 @@
 <use name=RecoMuon/TrackingTools>
 <use name=TrackingTools/TransientTrack>
 <use name=CalibMuon/DTDigiSync>
-<use name=RecoMuon/TrackingTools>
-<use name=TrackingTools/TransientTrack>
 
 <library file=DTSegmentResidual.cc,DTMeanTimer.cc,DTAnalyzer.cc name=DTAnalyzer>
   <flags EDM_PLUGIN=1> 
