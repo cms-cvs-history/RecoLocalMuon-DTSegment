@@ -1,0 +1,10 @@
+  module DTEffAnalyzer = DTEffAnalyzer {
+      untracked bool debug = false
+      untracked string rootFileName = "DTEffAnalyzer.root"
+      string recHits1DLabel = "dt1DRecHits"
+      string recHits2DLabel = "dt2DSegments"
+      string recHits4DLabel = "dt4DSegments"
+      int32 minHitsSegment = 5
+      double minChi2NormSegment = 20.
+      double minCloseDist = 20.
+  }

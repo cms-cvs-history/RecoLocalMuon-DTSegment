@@ -1,0 +1,8 @@
+## Filter
+  module DTFilter = DTFilter {
+    untracked bool debug = false
+      bool useLTC = false
+      bool LTC_RPC = true
+      bool LTC_DT = true
+      bool LTC_CSC = true
+  }

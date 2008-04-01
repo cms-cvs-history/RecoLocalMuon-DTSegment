@@ -1,0 +1,29 @@
+  module DTAnalyzerDetailed = DTAnalyzerDetailed {
+
+      untracked bool debug = false
+    bool doHits = true
+      bool doSegs = true
+      bool doSA = true
+      untracked string rootFileName = "DTAnalyzerDetailed.root"
+      string recHits1DLabel = "dt1DRecHits"
+      string recHits2DLabel = "dt2DSegments"
+      string recHits4DLabel = "dt4DSegments"
+# # The module to be used for ttrig synchronization and its paraemter set
+      untracked string tTrigMode = 'DTTTrigSyncFromDB'
+      untracked PSet tTrigModeConfig = {
+        untracked bool debug = false
+# The ttrig from the time box fit is defined as mean + kFactor * sigma
+          double kFactor = -1.3
+# The velocity of signal propagation along the wire (cm/ns)
+          double vPropWire = 24.4
+# Switch on/off the TOF correction from pulses
+          bool doT0Correction = true   
+# Switch on/off the TOF correction for particles
+          bool doTOFCorrection = false 
+# Switch on/off the correction for the signal propagation along the wire
+          bool doWirePropCorrection  = false 
+# The correction type for TOF
+          int32 tofCorrType = 2
+          int32 wirePropCorrType = 0
+      }
+  }

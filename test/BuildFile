@@ -7,11 +7,15 @@
 <use name=Geometry/Records>
 <use name=Geometry/DTGeometry>
 <use name=DataFormats/LTCDigi>
-<use name=RecoMuon/TrackingTools>
-<use name=TrackingTools/TransientTrack>
 <use name=CalibMuon/DTDigiSync>
 
-<library file=DTSegmentResidual.cc,DTMeanTimer.cc,DTAnalyzer.cc name=DTAnalyzer>
+<library file=DTFilter.cc name=DTFilter>
+  <flags EDM_PLUGIN=1> 
+</library>
+<library file=DTSegmentResidual.cc,DTMeanTimer.cc,DTAnalyzerDetailed.cc name=DTAnalyzerDetailed>
+  <flags EDM_PLUGIN=1> 
+</library>
+<library file=DTSegmentResidual.cc,DTMeanTimer.cc,DTSegAnalyzer.cc name=DTSegAnalyzer>
   <flags EDM_PLUGIN=1> 
 </library>
 <library file=DTEffAnalyzer.cc name=DTEffAnalyzer>
