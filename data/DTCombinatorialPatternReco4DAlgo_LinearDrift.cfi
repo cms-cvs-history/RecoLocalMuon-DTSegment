@@ -37,5 +37,11 @@ PSet Reco4DAlgoConfig = {
 		      int32 nSharedHitsMax = 2
 		      int32 nUnSharedHitsMin = 2
  		      int32 segmCleanerMode = 1
- }
+        ## Parameters for  T0 fit segment in the Updator 
+ 
+          bool performT0SegCorrection         = false
+          bool performT0_vdriftSegCorrection  = false
+          untracked bool T0SegCorrectionDebug  = false
+          double hit_afterT0_resolution       = 0.03
+  }
 }

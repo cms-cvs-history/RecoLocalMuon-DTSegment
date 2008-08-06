@@ -27,5 +27,13 @@ block DTCombinatorialPatternReco2DAlgo_LinearDrift_CosmicData = {
 		      int32 nSharedHitsMax = 2
 		      int32 nUnSharedHitsMin = 2
 		      int32 segmCleanerMode = 1
+
+ 	## Parameters for the Updator and T0 fit segment 
+
+          bool performT0SegCorrection         = false
+          bool performT0_vdriftSegCorrection  = false
+          untracked bool T0SegCorrectionDebug  = false
+	  double hit_afterT0_resolution       = 0.03 
+
 	}
 }
