@@ -28,6 +28,11 @@ DTFilter::DTFilter(const edm::ParameterSet& pset) {
   // Get the debug parameter for verbose output
   debug = pset.getUntrackedParameter<bool>("debug");
 
+  //
+  doRunEvFiltering = pset.getParameter<bool>("doRunEvFiltering");
+  theRun = pset.getParameter<int>("run");
+  theEv = pset.getParameter<int>("event");
+
   // Use LTC
   useLTC = pset.getParameter<bool>("useLTC");
   LTC_RPC = pset.getParameter<bool>("LTC_RPC");
@@ -41,6 +46,15 @@ DTFilter::~DTFilter() {
 
 /* Operations */ 
 bool DTFilter::filter(edm::Event& event, const edm::EventSetup& setup) {
+
+  if (doRunEvFiltering) {
+    if (event.id().run()==theRun && event.id().event()==theEv) {
+      cout << endl<<"--- [DTFilter] Event analysed #Run: " <<
+        event.id().run() << " #Event: " << event.id().event() << endl;
+      return true;
+    }
+    return false;
+  }
 
   bool result = false;
   // Trigger analysis

@@ -8,6 +8,8 @@
 <use name=Geometry/DTGeometry>
 <use name=DataFormats/LTCDigi>
 <use name=CalibMuon/DTDigiSync>
+<use name=RecoMuon/TrackingTools>
+<use name=TrackingTools/TransientTrack>
 
 <library file=DTFilter.cc name=DTFilter>
   <flags EDM_PLUGIN=1> 
@@ -21,7 +23,16 @@
 <library file=DTEffAnalyzer.cc name=DTEffAnalyzer>
   <flags EDM_PLUGIN=1> 
 </library>
+<<<<<<< BuildFile
+<library file=DTClusAnalyzer.cc name=DTClusAnalyzer>
+  <flags EDM_PLUGIN=1> 
+</library>
+<library file=STAnalyzer.cc name=STAnalyzer>
+  <flags EDM_PLUGIN=1> 
+</library>
+=======
 <library file=DTSegmentResidual.cc,DTMeanTimer.cc,DTSegAnalyzer.cc name=DTSegAnalyzer>
   <flags EDM_PLUGIN=1>
 </library>
 
+>>>>>>> 1.10

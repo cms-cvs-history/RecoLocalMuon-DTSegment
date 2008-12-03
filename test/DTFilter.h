@@ -50,6 +50,10 @@ class DTFilter : public edm::EDFilter{
     bool debug;
     std::bitset<6> LTC;
 
+    bool doRunEvFiltering;
+    int theRun;
+    int theEv;
+
   protected:
 
 };
