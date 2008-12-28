@@ -23,16 +23,9 @@
 <library file=DTEffAnalyzer.cc name=DTEffAnalyzer>
   <flags EDM_PLUGIN=1> 
 </library>
-<<<<<<< BuildFile
 <library file=DTClusAnalyzer.cc name=DTClusAnalyzer>
   <flags EDM_PLUGIN=1> 
 </library>
 <library file=STAnalyzer.cc name=STAnalyzer>
   <flags EDM_PLUGIN=1> 
 </library>
-=======
-<library file=DTSegmentResidual.cc,DTMeanTimer.cc,DTSegAnalyzer.cc name=DTSegAnalyzer>
-  <flags EDM_PLUGIN=1>
-</library>
-
->>>>>>> 1.10
