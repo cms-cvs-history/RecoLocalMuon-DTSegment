@@ -48,7 +48,7 @@ DTFilter::~DTFilter() {
 bool DTFilter::filter(edm::Event& event, const edm::EventSetup& setup) {
 
   if (doRunEvFiltering) {
-    if (event.id().run()==theRun && event.id().event()==theEv) {
+    if ((int)event.id().run() == theRun && (int)event.id().event() == theEv) {
       cout << endl<<"--- [DTFilter] Event analysed #Run: " <<
         event.id().run() << " #Event: " << event.id().event() << endl;
       return true;
