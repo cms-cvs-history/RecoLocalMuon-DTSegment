@@ -29,3 +29,12 @@
 <library file=STAnalyzer.cc name=STAnalyzer>
   <flags EDM_PLUGIN=1> 
 </library>
+
+<Flags CXXFLAGS="-I /afs/cern.ch/user/e/ebusseti/public/glpk/include">
+<Flags LDFLAGS="/afs/cern.ch/user/e/ebusseti/public/glpk/lib/libglpk.a">
+
+<bin file=DTLPAlgo.cc>
+</bin>
+
+
+
