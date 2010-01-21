@@ -67,13 +67,10 @@ DTEffAnalyzer::DTEffAnalyzer(const ParameterSet& pset) {
 
 }
 
-void DTEffAnalyzer::beginRun(const edm::Run& run, const EventSetup& setup) {
-  // Get the DT Geometry
-  setup.get<MuonGeometryRecord>().get(dtGeom);
-}
-
-void DTEffAnalyzer::beginJob() {
+void DTEffAnalyzer::beginJob(const EventSetup& eventSetup) {
   if(debug) cout << "beginOfJob" << endl;
+  // Get the DT Geometry
+  eventSetup.get<MuonGeometryRecord>().get(dtGeom);
 
   // Create the root file
   theFile = new TFile(theRootFileName.c_str(), "RECREATE");
