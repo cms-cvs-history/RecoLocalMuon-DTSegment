@@ -55,8 +55,7 @@ class DTEffAnalyzer : public edm::EDAnalyzer {
 /* Operations */ 
 
     void analyze(const edm::Event & event, const edm::EventSetup& eventSetup);
-    void beginJob();
-    void beginRun(const edm::Run& run, const edm::EventSetup& setup);
+    void beginJob(const edm::EventSetup&);
 
   private:
 
