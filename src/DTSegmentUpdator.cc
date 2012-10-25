@@ -1,7 +1,7 @@
 /** \file
  *
- * $Date: 2012/01/31 18:05:58 $
- * $Revision: 1.46 $
+ * $Date: 2012/08/06 08:35:23 $
+ * $Revision: 1.49 $
  * \author Stefano Lacaprara - INFN Legnaro <stefano.lacaprara@pd.infn.it>
  * \author Riccardo Bellan - INFN TO <riccardo.bellan@cern.ch>
  * \       A.Meneguzzo - Padova University  <anna.meneguzzo@pd.infn.it>
@@ -382,7 +382,8 @@ void DTSegmentUpdator::updateHits(DTRecSegment2D* seg, GlobalPoint &gpos,
 
       LocalError error(T0_hit_resolution*T0_hit_resolution,0.,0.);
 
-      newHit1D.setPositionAndError(point, error);
+      //newHit1D.setPositionAndError(point, error);
+      newHit1D.setPosition(point);
 
       //FIXME: check that the hit is still inside the cell
       ok = true;
@@ -433,9 +434,9 @@ void DTSegmentUpdator::rejectBadHits(DTChamberRecSegment2D* phiSeg) const {
   float Sy2 = 0.;
   float Sxy = 0.;
 
-  const int N =  x.size();
+  size_t N =  x.size();
 	
-  for(int i = 0; i < N;++i){
+  for(size_t i = 0; i < N;++i){
     Sx += x.at(i);
     Sy += y.at(i);
     Sx2 += x.at(i)*x.at(i);
@@ -453,10 +454,10 @@ void DTSegmentUpdator::rejectBadHits(DTChamberRecSegment2D* phiSeg) const {
   // Calc residuals:
   float residuals[N];
 	
-  for(int i = 0; i < N;++i)
+  for(size_t i = 0; i < N;++i)
     residuals[i] = 0;
 	
-  for(int i = 0; i < N;++i)		
+  for(size_t i = 0; i < N;++i)		
     residuals[i] = y.at(i) - par[1]*x.at(i) - par[0];
 	
   if(debug) cout << " Residuals computed! "<<  endl;
@@ -467,7 +468,7 @@ void DTSegmentUpdator::rejectBadHits(DTChamberRecSegment2D* phiSeg) const {
 	
   float mean_residual = 0.; //mean of the absolute values of residuals
 	
-  for (int i = 0; i < N; ++i)
+  for (size_t i = 0; i < N; ++i)
     mean_residual += fabs(residuals[i]);
 	
   mean_residual = mean_residual/(N - 2);	
